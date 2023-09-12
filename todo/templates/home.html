@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <style>
+        /* Styles for the container */
+        .container {
+            width: 1000px; /* Set the width of the container */
+            height: 300px; /* Set the height of the container */
+
+            position: absolute; /* Use absolute positioning */
+            top: 100px; /* Set the top position in pixels */
+            left: 70%; /* Center the container horizontally */
+            transform: translateX(-50%); /* Adjust for centering */
+        }
+
+        /* Styles for the form */
+        form {
+            width: 100%; /* Adjust the form's width */
+            margin: 0 auto; /* Center the form horizontally */
+        }
+
+        .input-container {
+            width: 90%; /* Set the width of the input container to 100% of the form */
+            margin-bottom: 20px;
+            left:90%;
+        }
+
+        .form-control {
+            width: 100%; /* Set the input fields and date picker to occupy the full width of their container */
+            padding: 5px; /* Add some padding to the input fields for a better visual appearance */
+            font-size: 14px; /* Adjust the font size to your preference */
+        }
+
+        .btn-submit {
+            display: block; /* Make the submit button a block element */
+            width: 100%; /* Set the submit button to occupy the full width of the form */
+        }
+
+        .details {
+            width: 400px;
+            position: absolute;
+            top: 330px;
+            left: 40%;
+        }
+
+        #one {
+            position: absolute;
+            left: 30%;
+            top:40px;
+            width: 100px;
+            height: 35px;
+        }
+
+        #two{
+            width:100px;
+        }
+    </style>
+</head>
+<body>
+{% extends 'base.html' %}
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <form method="post" class="mb-3 shadow">
+                    {% csrf_token %}
+                    <div class="input-container">
+                        <input type="text" class="form-control" name="task" placeholder="Enter the task">
+                    </div>
+                    <div class="input-container">
+                        <input type="text" class="form-control" name="priority" placeholder="Enter priority number">
+                    </div>
+                    <div class="input-container">
+                        <input type="date" class="form-control" name="date">
+                    </div>
+                    <center><input type="submit" class="btn btn-success btn-submit" id="two"></center>
+                </form>
+                {% for msg in messages %}
+                {{msg}}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="details">
+        <h6>Do you want to see already assigned tasks?</h6><br>
+        <a href="/details" class="btn btn-primary" id="one">Click Here</a>
+    </div>
+{% endblock %}
+</body>
+</html>

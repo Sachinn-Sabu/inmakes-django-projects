@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Details</title>
+    <style>
+        .center-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+            margin-top: -140px;
+        }
+    </style>
+</head>
+<body>
+    {% extends 'base.html' %}
+    {% block body %}
+    <div class="center-content">
+
+
+        <h2>{{res.name}}</h2><br>
+        <img src="{{res.img.url}}" width="600" height="200"><br>
+        {{res.desc}}<br><br>
+        <a href="{% url 'movieapp:update' res.id %} " class="btn btn-primary">Update</a><br><br>
+        <a href="{% url 'movieapp:delete' res.id %}" class="btn btn-primary">Delete</a>
+
+    </div>
+     {% endblock %}
+</body>
+</html>
